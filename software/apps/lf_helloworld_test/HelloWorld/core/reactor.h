@@ -51,7 +51,7 @@
 #ifndef REACTOR_H
 #define REACTOR_H
 
-#include <stdbool.h>
+#include "platform.h"  // Platform-specific times and APIs
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,7 +60,7 @@
 #include <errno.h>
 #include "pqueue.h"
 #include "util.h"
-#include "tag.h"    // Time-related types and functions.
+#include "tag.h"       // Time-related functions.
 
 // The following file is also included, but must be included
 // after its requirements are met, so the #include appears at
@@ -121,7 +121,7 @@ do { \
 #define _LF_SET_ARRAY(out, val, element_size, length) \
 do { \
     out->is_present = true; \
-    lf_token_t* token = __initialize_token_with_value(out->token, val, length); \
+    lf_token_t* token = _lf_initialize_token_with_value(out->token, val, length); \
     token->ref_count = out->num_destinations; \
     out->token = token; \
     out->value = token->value; \
@@ -130,7 +130,7 @@ do { \
 #define _LF_SET_ARRAY(out, val, element_size, length) \
 do { \
     out->is_present = true; \
-    lf_token_t* token = __initialize_token_with_value(out->token, val, length); \
+    lf_token_t* token = _lf_initialize_token_with_value(out->token, val, length); \
     token->ref_count = out->num_destinations; \
     out->token = token; \
     out->value = static_cast<decltype(out->value)>(token->value); \
@@ -151,13 +151,23 @@ do { \
  * struct to true (which causes the object message to be sent),
  * @param out The output port (by name).
  */
+#ifndef __cplusplus
 #define _LF_SET_NEW(out) \
 do { \
     out->is_present = true; \
-    lf_token_t* token = __set_new_array_impl(out->token, 1, out->num_destinations); \
+    lf_token_t* token = _lf_set_new_array_impl(out->token, 1, out->num_destinations); \
     out->value = token->value; \
     out->token = token; \
 } while(0)
+#else
+#define _LF_SET_NEW(out) \
+do { \
+    out->is_present = true; \
+    lf_token_t* token = _lf_set_new_array_impl(out->token, 1, out->num_destinations); \
+    out->value = static_cast<decltype(out->value)>(token->value); \
+    out->token = token; \
+} while(0)
+#endif // __cplusplus
 
 /**
  * Version of set() for output types given as 'type[]'.
@@ -176,7 +186,7 @@ do { \
 #define _LF_SET_NEW_ARRAY(out, len) \
 do { \
     out->is_present = true; \
-    lf_token_t* token = __set_new_array_impl(out->token, len, out->num_destinations); \
+    lf_token_t* token = _lf_set_new_array_impl(out->token, len, out->num_destinations); \
     out->value = token->value; \
     out->token = token; \
     out->length = len; \
@@ -185,7 +195,7 @@ do { \
 #define _LF_SET_NEW_ARRAY(out, len) \
 do { \
     out->is_present = true; \
-    lf_token_t* token = __set_new_array_impl(out->token, len, out->num_destinations); \
+    lf_token_t* token = _lf_set_new_array_impl(out->token, len, out->num_destinations); \
     out->value = static_cast<decltype(out->value)>(token->value); \
     out->token = token; \
     out->length = len; \
@@ -324,7 +334,7 @@ typedef enum {absent = false, present = true, unknown} port_status_t;
  * The flag OK_TO_FREE is used to indicate whether
  * the void* in toke_t should be freed or not.
  */ 
-#ifdef __GARBAGE_COLLECTED
+#ifdef _LF_GARBAGE_COLLECTED
 #define OK_TO_FREE token_only
 #else
 #define OK_TO_FREE token_and_value
@@ -336,7 +346,7 @@ typedef enum {absent = false, present = true, unknown} port_status_t;
  * used to cancel a future scheduled event, but this is not
  * implemented yet.
  */
-typedef int handle_t;
+typedef int trigger_handle_t;
 
 /**
  * String type so that we don't have to use {= char* =}.
@@ -395,7 +405,7 @@ typedef struct lf_token_t {
     /** Size of the struct or array element. */
     size_t element_size;
     /** Length of the array or 1 for a struct. */
-    int length;
+    size_t length;
     /** The number of input ports that have not already reacted to the message. */
     int ref_count;
     /**
@@ -437,7 +447,7 @@ struct reaction_t {
     unsigned long long chain_id; // Binary encoding of the branches that this reaction has upstream in the dependency graph. INSTANCE.
     size_t pos;       // Current position in the priority queue. RUNTIME.
     reaction_t* last_enabling_reaction; // The last enabling reaction, or NULL if there is none. Used for optimization. INSTANCE.
-    int num_outputs;  // Number of outputs that may possibly be produced by this function. COMMON.
+    size_t num_outputs;  // Number of outputs that may possibly be produced by this function. COMMON.
     bool** output_produced;   // Array of pointers to booleans indicating whether outputs were produced. COMMON.
     int* triggered_sizes;     // Pointer to array of ints with number of triggers per output. INSTANCE.
     trigger_t ***triggers;    // Array of pointers to arrays of pointers to triggers triggered by each output. INSTANCE.
@@ -569,46 +579,46 @@ void request_stop();
 /** 
  * Generated function that optionally sets default command-line options.
  */
-void __set_default_command_line_options();
+void _lf_set_default_command_line_options();
 
 /** 
  * Generated function that resets outputs to be absent at the
  * start of a new time step.
  */
-void __start_time_step();
+void _lf_start_time_step();
 
 /** 
  * Generated function that produces a table containing all triggers
  * (i.e., inputs, timers, and actions).
  */
-void __initialize_trigger_objects();
+void _lf_initialize_trigger_objects();
 
 /**
  * Pop all events from event_q with timestamp equal to current_time, extract all
  * the reactions triggered by these events, and stick them into the reaction
  * queue.
  */
-void __pop_events();
+void _lf_pop_events();
 
 /** 
  * Internal version of the schedule() function, used by generated 
- * __start_timers() function. 
+ * _lf_start_timers() function. 
  * @param trigger The action or timer to be triggered.
  * @param delay Offset of the event release.
  * @param token The token payload.
  * @return A handle to the event, or 0 if no event was scheduled, or -1 for error.
  */
-handle_t __schedule(trigger_t* trigger, interval_t delay, lf_token_t* token);
+trigger_handle_t _lf_schedule(trigger_t* trigger, interval_t delay, lf_token_t* token);
 
 /**
  * Function (to be code generated) to schedule timers.
  */
-void __initialize_timers();
+void _lf_initialize_timers();
 
 /**
  * Function (to be code generated) to trigger startup reactions.
  */
-void __trigger_startup_reactions();
+void _lf_trigger_startup_reactions();
 
 
 /**
@@ -620,7 +630,7 @@ void terminate_execution();
 /**
  * Function (to be code generated) to trigger shutdown reactions.
  */
-bool __trigger_shutdown_reactions();
+bool _lf_trigger_shutdown_reactions();
 
 /**
  * Create a new token and initialize it.
@@ -641,7 +651,7 @@ lf_token_t* create_token(size_t element_size);
  * @param value The value to send.
  * @return A handle to the event, or 0 if no event was scheduled, or -1 for error.
  */
-handle_t _lf_schedule_int(void* action, interval_t extra_delay, int value);
+trigger_handle_t _lf_schedule_int(void* action, interval_t extra_delay, int value);
 
 /**
  * Get a new event. If there is a recycled event available, use that.
@@ -726,13 +736,13 @@ event_t* _lf_create_dummy_event(trigger_t* trigger, instant_t time, event_t* nex
  * @param token The token to carry the payload or null for no payload.
  * @return A handle to the event, or 0 if no event was scheduled, or -1 for error.
  */
-handle_t _lf_schedule_token(void* action, interval_t extra_delay, lf_token_t* token);
+trigger_handle_t _lf_schedule_token(void* action, interval_t extra_delay, lf_token_t* token);
 
 /**
  * Variant of schedule_token that creates a token to carry the specified value.
  * The value is required to be malloc'd memory with a size equal to the
  * element_size of the specifies action times the length parameter.
- * See schedule_token() for details.
+ * See _lf_schedule_token() for details.
  * @param action The action to be triggered.
  * @param extra_delay Extra offset of the event release above that in the action.
  * @param value Dynamically allocated memory containing the value to send.
@@ -740,7 +750,7 @@ handle_t _lf_schedule_token(void* action, interval_t extra_delay, lf_token_t* to
  *  scalar and 0 for no payload.
  * @return A handle to the event, or 0 if no event was scheduled, or -1 for error.
  */
-handle_t _lf_schedule_value(void* action, interval_t extra_delay, void* value, int length);
+trigger_handle_t _lf_schedule_value(void* action, interval_t extra_delay, void* value, size_t length);
 
 /**
  * Schedule an action to occur with the specified value and time offset
@@ -748,14 +758,14 @@ handle_t _lf_schedule_value(void* action, interval_t extra_delay, void* value, i
  * then it will be copied into newly allocated memory under the assumption
  * that its size is given in the trigger's token object's element_size field
  * multiplied by the specified length.
- * See schedule_token(), which this uses, for details.
+ * See _lf_schedule_token(), which this uses, for details.
  * @param action Pointer to an action on a self struct.
  * @param offset The time offset over and above that in the action.
  * @param value A pointer to the value to copy.
  * @param length The length, if an array, 1 if a scalar, and 0 if value is NULL.
  * @return A handle to the event, or 0 if no event was scheduled, or -1 for error.
  */
-handle_t _lf_schedule_copy(void* action, interval_t offset, void* value, int length);
+trigger_handle_t _lf_schedule_copy(void* action, interval_t offset, void* value, size_t length);
 
 /**
  * For a federated execution, send a STOP_REQUEST message
@@ -792,43 +802,6 @@ bool _lf_is_blocked_by_executing_reaction();
  * meaning that the execution is not threaded.
  */
 extern unsigned int _lf_number_of_threads;
-
-//  ******** Begin Windows Support ********  //
-// Windows is not POSIX, so we include here compatibility definitions.
-#if _WIN32 || WIN32
-#pragma warning(disable: 4204 4255 4459 4710)
-#ifdef  _M_X64
-typedef long long intptr_t;
-#else
-typedef int intptr_t;
-#endif
-typedef intptr_t INTPTR_T;
-typedef struct HINSTANCE__ *HINSTANCE;
-typedef HINSTANCE HMODULE;
-typedef INTPTR_T (__stdcall *FARPROC)();
-HMODULE __stdcall GetModuleHandleA(char const *lpModuleName);
-FARPROC __stdcall GetProcAddress(HMODULE hModule, char const *lpProcName);
-typedef long NTSTATUS;
-typedef union _LARGE_INTEGER *PLARGE_INTEGER;
-typedef NTSTATUS __stdcall NtDelayExecution_t(unsigned char Alertable,
-  PLARGE_INTEGER Interval);
-NtDelayExecution_t *NtDelayExecution;
-typedef NTSTATUS __stdcall NtQueryPerformanceCounter_t(
-  PLARGE_INTEGER PerformanceCounter, PLARGE_INTEGER PerformanceFrequency);
-NtQueryPerformanceCounter_t *NtQueryPerformanceCounter;
-typedef NTSTATUS __stdcall NtQuerySystemTime_t(PLARGE_INTEGER SystemTime); 
-NtQuerySystemTime_t *NtQuerySystemTime;
-#ifndef CLOCK_REALTIME
-#define CLOCK_REALTIME 0
-#endif
-#ifndef CLOCK_MONOTONIC
-#define CLOCK_MONOTONIC 1
-#endif
-typedef int clockid_t;
-int clock_gettime(clockid_t clk_id, struct timespec *tp);
-int nanosleep(const struct timespec *req, struct timespec *rem);
-#endif
-//  ******** End Windows Support ********  //
 
 #include "trace.h"
 

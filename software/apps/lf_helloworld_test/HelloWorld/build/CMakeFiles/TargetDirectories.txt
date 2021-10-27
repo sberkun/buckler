@@ -1,0 +1,7 @@
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/install/strip.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/install/local.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/HelloWorld.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/edit_cache.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/rebuild_cache.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/install.dir
+/lf/proj/src-gen/HelloWorld/build/CMakeFiles/list_install_components.dir
