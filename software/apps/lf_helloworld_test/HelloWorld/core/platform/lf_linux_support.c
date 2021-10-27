@@ -32,6 +32,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "lf_linux_support.h"
 #include "../platform.h"
 
+#include "nrf_delay.h"
+#include "nrf.h"
+
 #ifdef NUMBER_OF_WORKERS
 #if __STDC_VERSION__ < 201112L || defined (__STDC_NO_THREADS__) // (Not C++11 or later) or no threads support
 #include "lf_POSIX_threads_support.c"
@@ -52,7 +55,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *  set appropriately (see `man 2 clock_nanosleep`).
  */
 int lf_nanosleep(instant_t requested_time) {
-    const struct timespec tp = convert_ns_to_timespec(requested_time);
-    struct timespec remaining;
-    return clock_nanosleep(_LF_CLOCK, 0, (const struct timespec*)&tp, (struct timespec*)&remaining);
+    instant_t requested_ms = requested_time / 1000000;
+    nrf_delay_ms((int) requested_ms);
+    return 0;
 }

@@ -38,6 +38,7 @@ struct timespec convert_ns_to_timespec(instant_t t) {
  * time reported by CLOCK_REALTIME.
  */
 void calculate_epoch_offset() {
+    /*
     if (_LF_CLOCK == CLOCK_REALTIME) {
         // Set the epoch offset to zero (see tag.h)
         _lf_epoch_offset = 0LL;
@@ -56,6 +57,7 @@ void calculate_epoch_offset() {
 
         _lf_epoch_offset = real_time_start_ns - physical_clock_snapshot_ns;
     }
+    */
 }
 
 /**
@@ -63,6 +65,15 @@ void calculate_epoch_offset() {
  */
 void lf_initialize_clock() {
     calculate_epoch_offset();
+    // Initialize TIMER4 as a free running timer
+    // 1) Set to be a 32 bit timer
+    // 2) Set to count at 1MHz
+    // 3) Clear the timer
+    // 4) Start the timer
+    NRF_TIMER4->BITMODE = 3;
+    NRF_TIMER4->PRESCALER = 4;
+    NRF_TIMER4->TASKS_CLEAR = 1;
+    NRF_TIMER4->TASKS_START = 1;
 }
 
 /**
@@ -74,26 +85,15 @@ void lf_initialize_clock() {
  *  set appropriately (see `man 2 clock_gettime`).
  */
 int lf_clock_gettime(instant_t* t) {
-    struct timespec tp;
-    // Adjust the clock by the epoch offset, so epoch time is always reported.
-    int return_value = clock_gettime(_LF_CLOCK, (struct timespec*) &tp);
-    if (return_value < 0) {
-        return -1;
-    }
-
-    instant_t tp_in_ns = convert_timespec_to_ns(tp);
-
-    // We need to apply the epoch offset if it is not zero
-    if (_lf_epoch_offset != 0) {
-        tp_in_ns += _lf_epoch_offset;
-    }
-    
     if (t == NULL) {
         // The t argument address references invalid memory
         errno = EFAULT;
         return -1;
     }
 
-    *t = tp_in_ns;
-    return return_value;
+    NRF_TIMER4->TASKS_CAPTURE[1] = 1;
+    instant_t tp_in_us = (instant_t)(NRF_TIMER4->CC[1]);
+
+    *t = tp_in_us * 1000;
+    return 0;
 }

@@ -42,27 +42,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-   // Windows platforms
-   #include "platform/lf_windows_support.h"
-#elif __APPLE__
-    // Apple platforms
-    #include "platform/lf_macos_support.h"
-#elif __linux__
-    // Linux
-    #include "platform/lf_linux_support.h"
-#elif __unix__ // all unices not caught above
-    // Unix
-    #include "platform/lf_POSIX_threads_support.h"
-#elif defined(_POSIX_VERSION)
-    // POSIX
-    #include "platform/lf_POSIX_threads_support.h"
-#elif defined(__riscv) || defined(__riscv__) 
-    // RISC-V (see https://github.com/riscv/riscv-toolchain-conventions)
-    #error "RISC-V not supported"
-#else
-#error "Platform not supported"
-#endif
+
+// Linux
+#include "platform/lf_linux_support.h"
 
 #ifdef NUMBER_OF_WORKERS
 #define LF_TIMEOUT _LF_TIMEOUT

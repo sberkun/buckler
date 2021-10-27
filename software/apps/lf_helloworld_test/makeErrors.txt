@@ -1,89 +1,7 @@
-In file included from HelloWorld/core/reactor.h:54:0,
-                 from HelloWorld/ctarget.h:44,
-                 from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
-HelloWorld/core/platform.h:64:2: error: #error "Platform not supported"
- #error "Platform not supported"
-  ^~~~~
-HelloWorld/core/platform.h:79:9: error: unknown type name '_instant_t'
- typedef _instant_t instant_t;
-         ^~~~~~~~~~
-HelloWorld/core/platform.h:84:9: error: unknown type name '_interval_t'
- typedef _interval_t interval_t;
-         ^~~~~~~~~~~
-HelloWorld/core/platform.h:89:9: error: unknown type name '_microstep_t'
- typedef _microstep_t microstep_t;
-         ^~~~~~~~~~~~
-In file included from HelloWorld/ctarget.h:44:0,
-                 from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
-HelloWorld/core/reactor.h:331:24: error: 'false' undeclared here (not in a function); did you mean 'flsl'?
- typedef enum {absent = false, present = true, unknown} port_status_t;
-                        ^~~~~
-                        flsl
-HelloWorld/core/reactor.h:331:41: error: 'true' undeclared here (not in a function); did you mean 'time'?
- typedef enum {absent = false, present = true, unknown} port_status_t;
-                                         ^~~~
-                                         time
-HelloWorld/core/reactor.h:428:5: error: unknown type name 'bool'
-     bool reset_is_present; // True to set is_present to false after calling done_using().
-     ^~~~
-In file included from HelloWorld/ctarget.h:44:0,
-                 from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
-HelloWorld/core/reactor.h:451:5: error: unknown type name 'bool'
-     bool** output_produced;   // Array of pointers to booleans indicating whether outputs were produced. COMMON.
-     ^~~~
-HelloWorld/core/reactor.h:454:5: error: unknown type name 'bool'
-     bool running;             // Indicator that this reaction has already started executing. RUNTIME.
-     ^~~~
-HelloWorld/core/reactor.h:456:5: error: unknown type name 'bool'
-     bool is_STP_violated;     // Indicator of STP violation in one of the input triggers to this reaction. default = false.
-     ^~~~
-HelloWorld/core/reactor.h:468:5: error: unknown type name 'bool'
-     bool is_a_control_reaction; // Indicates whether this reaction is a control reaction. Control
-     ^~~~
-HelloWorld/core/reactor.h:485:5: error: unknown type name 'bool'
-     bool is_dummy;            // Flag to indicate whether this event is merely a placeholder or an actual event.
-     ^~~~
-HelloWorld/core/reactor.h:499:5: error: unknown type name 'bool'
-     bool is_timer;            // True if this is a timer (a special kind of action), false otherwise.
-     ^~~~
-HelloWorld/core/reactor.h:503:5: error: unknown type name 'bool'
-     bool is_physical;         // Indicator that this denotes a physical action.
-     ^~~~
-HelloWorld/core/reactor.h:633:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_trigger_shutdown_reactions();
- ^~~~
- _Bool
-HelloWorld/core/reactor.h:795:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_is_blocked_by_executing_reaction();
- ^~~~
- _Bool
 In file included from HelloWorld/core/reactor_common.c:38:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
                  from main.c:30:
-HelloWorld/core/tag.c:47:33: warning: overflow in implicit constant conversion [-Woverflow]
- instant_t physical_start_time = NEVER;
-                                 ^~~~~
-HelloWorld/core/tag.c:53:24: warning: overflow in implicit constant conversion [-Woverflow]
- instant_t start_time = NEVER;
-                        ^~~~~
-HelloWorld/core/tag.c: In function 'delay_tag':
-HelloWorld/core/tag.c:117:15: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-  if (tag.time == NEVER || interval == NEVER) return tag;
-               ^~
-HelloWorld/core/tag.c:117:36: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-  if (tag.time == NEVER || interval == NEVER) return tag;
-                                    ^~
-HelloWorld/core/tag.c:127:18: warning: overflow in implicit constant conversion [-Woverflow]
-    result.time = FOREVER;
-                  ^~~~~~~
-HelloWorld/core/tag.c: At top level:
-HelloWorld/core/tag.c:179:59: warning: overflow in implicit constant conversion [-Woverflow]
- instant_t _lf_last_reported_unadjusted_physical_time_ns = NEVER;
-                                                           ^~~~~
 HelloWorld/core/tag.c: In function 'get_physical_time':
 HelloWorld/core/tag.c:190:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("Failed to read the physical clock.");
@@ -249,29 +167,6 @@ HelloWorld/core/util.c:181:26: warning: passing argument 2 of '_lf_message_print
 HelloWorld/core/util.c:77:6: note: expected 'char *' but argument is of type 'const char *'
  void _lf_message_print(
       ^~~~~~~~~~~~~~~~~
-In file included from HelloWorld/core/reactor.c:35:0,
-                 from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
-HelloWorld/core/reactor_common.c: At top level:
-HelloWorld/core/reactor_common.c:47:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool fast = false;
- ^~~~
- _Bool
-HelloWorld/core/reactor_common.c:67:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_execution_started = false;
- ^~~~
- _Bool
-HelloWorld/core/reactor_common.c:77:18: warning: overflow in implicit constant conversion [-Woverflow]
- tag_t stop_tag = FOREVER_TAG_INITIALIZER;
-                  ^~~~~~~~~~~~~~~~~~~~~~~
-HelloWorld/core/reactor_common.c:80:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool keepalive_specified = false;
- ^~~~
- _Bool
-HelloWorld/core/reactor_common.c:85:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool** _lf_is_present_fields = NULL;
- ^~~~
- _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -462,14 +357,6 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
-In file included from HelloWorld/core/reactor.c:35:0,
-                 from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
-HelloWorld/core/reactor_common.c: At top level:
-HelloWorld/core/reactor_common.c:568:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_is_tag_after_stop_tag(tag_t tag) {
- ^~~~
- _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -876,13 +763,6 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
-In file included from HelloWorld/core/reactor.c:35:0,
-                 from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
-HelloWorld/core/reactor_common.c:1295:5: error: unknown type name 'bool'; did you mean '_Bool'?
-     bool is_STP_violated = false;
-     ^~~~
-     _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -1068,13 +948,6 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
-In file included from HelloWorld/core/reactor.c:35:0,
-                 from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
-HelloWorld/core/reactor_common.c:1525:9: error: unknown type name 'bool'; did you mean '_Bool'?
-         bool violation = false;
-         ^~~~
-         _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -1594,12 +1467,6 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
-In file included from HelloWorld/HelloWorld.c:5:0,
-                 from main.c:30:
-HelloWorld/core/reactor.c:158:9: error: unknown type name 'bool'; did you mean '_Bool'?
-         bool violation = false;
-         ^~~~
-         _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -1617,16 +1484,11 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
-In file included from HelloWorld/HelloWorld.c:5:0,
-                 from main.c:30:
-HelloWorld/core/reactor.c: In function 'next':
-HelloWorld/core/reactor.c:233:32: warning: overflow in implicit constant conversion [-Woverflow]
-     tag_t next_tag = { .time = LLONG_MAX, .microstep = UINT_MAX};
-                                ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
                  from main.c:30:
+HelloWorld/core/reactor.c: In function 'next':
 HelloWorld/core/reactor.c:255:15: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      LOG_PRINT("Next event (elapsed) time is %lld.", next_tag.time - start_time);
                ^
@@ -1657,13 +1519,6 @@ In file included from HelloWorld/core/reactor_common.c:40:0,
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
-In file included from HelloWorld/HelloWorld.c:5:0,
-                 from main.c:30:
-HelloWorld/core/reactor.c: At top level:
-HelloWorld/core/reactor.c:311:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_is_blocked_by_executing_reaction() {
- ^~~~
- _Bool
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
@@ -1763,10 +1618,6 @@ HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'c
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from main.c:30:0:
-HelloWorld/HelloWorld.c: At top level:
-HelloWorld/HelloWorld.c:10:5: error: unknown type name 'bool'
-     bool success;
-     ^~~~
 HelloWorld/HelloWorld.c: In function 'new_HelloWorld2':
 HelloWorld/HelloWorld.c:48:32: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      self->_lf__reaction_0.name = "?";
@@ -1781,90 +1632,38 @@ HelloWorld/HelloWorld.c:86:22: warning: comparison between signed and unsigned i
 HelloWorld/HelloWorld.c:89:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
      for(int i = 0; i < self->_lf__reaction_1.num_outputs; i++) {
                       ^
-HelloWorld/HelloWorld.c: At top level:
-HelloWorld/HelloWorld.c:98:5: error: unknown type name 'bool'
-     bool hasContents;
-     ^~~~
 HelloWorld/HelloWorld.c: In function '_lf_initialize_trigger_objects':
-HelloWorld/HelloWorld.c:135:12: error: unknown type name 'bool'
-     static bool helloworld_a_initial_success = false;
-            ^~~~
-HelloWorld/HelloWorld.c:145:20: error: 'bool' undeclared (first use in this function); did you mean 'atol'?
-                 = (bool**)malloc(sizeof(bool*) * helloworld_a_self->_lf__reaction_0.num_outputs);
-                    ^~~~
-                    atol
-HelloWorld/HelloWorld.c:145:20: note: each undeclared identifier is reported only once for each function it appears in
-HelloWorld/HelloWorld.c:145:26: error: expected expression before ')' token
-                 = (bool**)malloc(sizeof(bool*) * helloworld_a_self->_lf__reaction_0.num_outputs);
-                          ^
-HelloWorld/HelloWorld.c:157:26: error: expected expression before ')' token
-                 = (bool**)malloc(sizeof(bool*) * helloworld_a_self->_lf__reaction_1.num_outputs);
-                          ^
 HelloWorld/HelloWorld.c:128:24: warning: unused variable 'helloworld_self' [-Wunused-variable]
      helloworld_self_t* helloworld_self = new_HelloWorld();
                         ^~~~~~~~~~~~~~~
-HelloWorld/HelloWorld.c: At top level:
-HelloWorld/HelloWorld.c:195:1: error: unknown type name 'bool'; did you mean '_Bool'?
- bool _lf_trigger_shutdown_reactions() {
- ^~~~
- _Bool
-In file included from HelloWorld/core/platform/lf_linux_support.c:32:0,
+In file included from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/app_util.h:56:0,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/integration/nrfx/nrfx_glue.h:71,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/modules/nrfx/nrfx.h:46,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/delay/nrf_delay.h:44,
+                 from HelloWorld/core/platform/lf_linux_support.c:35,
                  from main.c:31:
-HelloWorld/core/platform/lf_unix_clock_support.c: In function 'calculate_epoch_offset':
-HelloWorld/core/platform/lf_linux_support.h:67:19: error: 'CLOCK_MONOTONIC' undeclared (first use in this function)
- #define _LF_CLOCK CLOCK_MONOTONIC
-                   ^
-HelloWorld/core/platform/lf_unix_clock_support.c:41:9: note: in expansion of macro '_LF_CLOCK'
-     if (_LF_CLOCK == CLOCK_REALTIME) {
-         ^~~~~~~~~
-In file included from HelloWorld/core/platform/lf_linux_support.c:43:0,
-                 from main.c:31:
-HelloWorld/core/platform/lf_unix_clock_support.c:50:9: warning: implicit declaration of function 'clock_gettime'; did you mean 'lf_clock_gettime'? [-Wimplicit-function-declaration]
-         clock_gettime(_LF_CLOCK, &physical_clock_snapshot);
-         ^~~~~~~~~~~~~
-         lf_clock_gettime
-HelloWorld/core/platform/lf_unix_clock_support.c:50:9: warning: nested extern declaration of 'clock_gettime' [-Wnested-externs]
-In file included from HelloWorld/core/platform/lf_linux_support.c:32:0,
-                 from main.c:31:
-HelloWorld/core/platform/lf_unix_clock_support.c: In function 'lf_clock_gettime':
-HelloWorld/core/platform/lf_linux_support.h:67:19: error: 'CLOCK_MONOTONIC' undeclared (first use in this function)
- #define _LF_CLOCK CLOCK_MONOTONIC
-                   ^
-HelloWorld/core/platform/lf_unix_clock_support.c:79:38: note: in expansion of macro '_LF_CLOCK'
-     int return_value = clock_gettime(_LF_CLOCK, (struct timespec*) &tp);
-                                      ^~~~~~~~~
-In file included from main.c:31:0:
-HelloWorld/core/platform/lf_linux_support.c: In function 'lf_nanosleep':
-HelloWorld/core/platform/lf_linux_support.c:57:12: warning: implicit declaration of function 'clock_nanosleep'; did you mean 'lf_nanosleep'? [-Wimplicit-function-declaration]
-     return clock_nanosleep(_LF_CLOCK, 0, (const struct timespec*)&tp, (struct timespec*)&remaining);
-            ^~~~~~~~~~~~~~~
-            lf_nanosleep
-HelloWorld/core/platform/lf_linux_support.c:57:12: warning: nested extern declaration of 'clock_nanosleep' [-Wnested-externs]
-In file included from HelloWorld/core/platform/lf_linux_support.c:32:0,
-                 from main.c:31:
-HelloWorld/core/platform/lf_linux_support.h:67:19: error: 'CLOCK_MONOTONIC' undeclared (first use in this function)
- #define _LF_CLOCK CLOCK_MONOTONIC
-                   ^
-HelloWorld/core/platform/lf_linux_support.c:57:28: note: in expansion of macro '_LF_CLOCK'
-     return clock_nanosleep(_LF_CLOCK, 0, (const struct timespec*)&tp, (struct timespec*)&remaining);
-                            ^~~~~~~~~
-In file included from HelloWorld/core/reactor.c:35:0,
-                 from HelloWorld/HelloWorld.c:5,
+../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h: At top level:
+../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h:97:0: warning: "MIN" redefined
+ #define MIN(a, b) ((a) < (b) ? (a) : (b))
+ 
+In file included from HelloWorld/ctarget.h:44:0,
+                 from HelloWorld/HelloWorld.c:2,
                  from main.c:30:
-HelloWorld/core/reactor_common.c: In function 'in_no_particular_order':
-HelloWorld/core/reactor_common.c:239:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-In file included from HelloWorld/HelloWorld.c:5:0,
+HelloWorld/core/reactor.h:274:0: note: this is the location of the previous definition
+ #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+ 
+In file included from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/app_util.h:56:0,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/integration/nrfx/nrfx_glue.h:71,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/modules/nrfx/nrfx.h:46,
+                 from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/delay/nrf_delay.h:44,
+                 from HelloWorld/core/platform/lf_linux_support.c:35,
+                 from main.c:31:
+../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h:100:0: warning: "MAX" redefined
+ #define MAX(a, b) ((a) < (b) ? (b) : (a))
+ 
+In file included from HelloWorld/ctarget.h:44:0,
+                 from HelloWorld/HelloWorld.c:2,
                  from main.c:30:
-HelloWorld/core/reactor.c: In function '_lf_is_blocked_by_executing_reaction':
-HelloWorld/core/reactor.c:313:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-In file included from main.c:31:0:
-HelloWorld/core/platform/lf_linux_support.c: In function 'lf_nanosleep':
-HelloWorld/core/platform/lf_linux_support.c:58:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-cc1: some warnings being treated as errors
-make: *** [_build/main.o] Error 1
+HelloWorld/core/reactor.h:271:0: note: this is the location of the previous definition
+ #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+ 
