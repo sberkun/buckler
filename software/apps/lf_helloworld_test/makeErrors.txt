@@ -1,7 +1,13 @@
+main.c: In function 'lf_thread_create':
+main.c:28:12: warning: implicit declaration of function 'pthread_create'; did you mean 'lf_thread_create'? [-Wimplicit-function-declaration]
+     return pthread_create((pthread_t*)thread, NULL, lf_thread, arguments);
+            ^~~~~~~~~~~~~~
+            lf_thread_create
+main.c:28:12: warning: nested extern declaration of 'pthread_create' [-Wnested-externs]
 In file included from HelloWorld/core/reactor_common.c:38:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/tag.c: In function 'get_physical_time':
 HelloWorld/core/tag.c:190:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("Failed to read the physical clock.");
@@ -9,7 +15,7 @@ HelloWorld/core/tag.c:190:21: warning: passing argument 1 of 'error_print' disca
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:177:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...);
       ^~~~~~~~~~~
@@ -25,7 +31,7 @@ HelloWorld/core/util.h:143:6: note: expected 'char *' but argument is of type 'c
 In file included from HelloWorld/core/reactor_common.c:39:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/pqueue.c: In function 'find_equal':
 HelloWorld/core/pqueue.c:51:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("find_equal() called with a negative pos index.");
@@ -33,14 +39,14 @@ HelloWorld/core/pqueue.c:51:30: warning: passing argument 1 of 'error_print_and_
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:190:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...);
       ^~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:39:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/pqueue.c: In function 'find_equal_same_priority':
 HelloWorld/core/pqueue.c:88:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("find_equal_same_priority() called with a negative pos index.");
@@ -48,7 +54,7 @@ HelloWorld/core/pqueue.c:88:30: warning: passing argument 1 of 'error_print_and_
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:190:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...);
       ^~~~~~~~~~~~~~~~~~~~
@@ -74,7 +80,7 @@ HelloWorld/core/util.h:143:6: note: expected 'char *' but argument is of type 'c
 In file included from HelloWorld/core/reactor_common.c:39:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/pqueue.c: In function 'subtree_is_valid':
 HelloWorld/core/pqueue.c:330:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("subtree_is_valid() called with a negative pos index.");
@@ -82,42 +88,42 @@ HelloWorld/core/pqueue.c:330:30: warning: passing argument 1 of 'error_print_and
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:190:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...);
       ^~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:39:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/pqueue.c:335:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("subtree_is_valid(): index overflow detected.");
                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:190:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...);
       ^~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:39:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/pqueue.c:348:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("subtree_is_valid(): index overflow detected.");
                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.h:190:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...);
       ^~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c: In function '_lf_message_print':
 HelloWorld/core/util.c:96:13: warning: function '_lf_message_print' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
              vfprintf(stderr, message, args);
@@ -170,7 +176,7 @@ HelloWorld/core/util.c:77:6: note: expected 'char *' but argument is of type 'co
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'print_reaction':
 HelloWorld/core/reactor_common.c:308:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("%s: chain_id:%llu, index: %llx, reaction: %p",
@@ -181,14 +187,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'print_event':
 HelloWorld/core/reactor_common.c:319:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("time: %lld, trigger: %p, token: %p",
@@ -199,13 +205,13 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_done_using':
 HelloWorld/core/reactor_common.c:377:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("Token being freed that has already been freed: %p", token);
@@ -213,14 +219,14 @@ HelloWorld/core/reactor_common.c:377:23: warning: passing argument 1 of 'warning
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:381:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("_lf_done_using: ref_count = %d.", token->ref_count);
                  ^
@@ -230,14 +236,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:388:29: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  DEBUG_PRINT("_lf_done_using: Freeing allocated memory for payload (token value): %p", token->value);
                              ^
@@ -247,14 +253,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:409:25: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              DEBUG_PRINT("_lf_done_using: Freeing allocated memory for token: %p", token);
                          ^
@@ -264,14 +270,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_start_time_step':
 HelloWorld/core/reactor_common.c:430:15: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      LOG_PRINT("--------- Start time step at tag (%lld, %u).", current_tag.time - start_time, current_tag.microstep);
@@ -282,14 +288,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_create_token':
 HelloWorld/core/reactor_common.c:477:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("_lf_create_token: Retrieved token from the recycling bin: %p", token);
@@ -300,14 +306,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:480:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("_lf_create_token: Allocated memory for token: %p", token);
                      ^
@@ -317,14 +323,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'create_token':
 HelloWorld/core/reactor_common.c:502:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("create_token: element_size: %zu", element_size);
@@ -335,14 +341,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_initialize_token_with_value':
 HelloWorld/core/reactor_common.c:529:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("Initializing a token %p with ref_count %d.", token, token->ref_count);
@@ -353,14 +359,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_pop_events':
 HelloWorld/core/reactor_common.c:583:22: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
           DEBUG_PRINT("Popped dummy event from the event queue.");
@@ -371,14 +377,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:585:26: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
               DEBUG_PRINT("Putting event from the event queue for the next microstep.");
                           ^
@@ -388,14 +394,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:623:29: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  DEBUG_PRINT("Enqueing reaction %s.", reaction->name);
                              ^
@@ -405,14 +411,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:626:29: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  DEBUG_PRINT("Reaction is already on the reaction_q: %s", reaction->name);
                              ^
@@ -422,14 +428,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:679:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("There are %d events deferred to the next microstep.", pqueue_size(next_q));
                  ^
@@ -439,14 +445,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_schedule_at_tag':
 HelloWorld/core/reactor_common.c:829:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("_lf_schedule_at_tag() called with tag (%lld, %u) at tag (%lld, %u).",
@@ -457,65 +463,65 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:833:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("_lf_schedule_at_tag(): requested to schedule an event in the past.");
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:844:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("_lf_schedule_at_tag: event time is past the timeout. Discarding event.");
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:901:41: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                              error_print("_lf_schedule_at_tag: in-order contract violated.");
                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:969:41: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                              error_print("_lf_schedule_at_tag: in-order contract violated.");
                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_schedule':
 HelloWorld/core/reactor_common.c:1033:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("schedule() called after stop tag.");
@@ -523,27 +529,27 @@ HelloWorld/core/reactor_common.c:1033:23: warning: passing argument 1 of 'warnin
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1038:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("schedule called with a negative extra_delay %lld. Replacing with zero.", extra_delay);
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1042:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("_lf_schedule: scheduling trigger %p with delay %lld and token %p.",
                  ^
@@ -553,14 +559,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1068:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("_lf_schedule: current_tag.time = %lld. Total logical delay = %lld",
                  ^
@@ -570,27 +576,27 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1100:27: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              warning_print("Attempting to schedule an event earlier than current time by %lld nsec! "
                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1129:29: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  DEBUG_PRINT("Attempt to schedule an event after stop_tag was rejected.");
                              ^
@@ -600,14 +606,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1147:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("There is a previously scheduled event; earliest possible time "
                      ^
@@ -617,14 +623,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1152:25: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              DEBUG_PRINT("Event is early.");
                          ^
@@ -634,14 +640,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1155:33: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                      DEBUG_PRINT("Policy is drop. Dropping the event.");
                                  ^
@@ -651,14 +657,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1166:33: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                      DEBUG_PRINT("Policy is replace. Replacing the previous event.");
                                  ^
@@ -668,27 +674,27 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1216:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("Attempting to schedule an event earlier than current time by %lld nsec! "
                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1227:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("Comparing event with elapsed time %lld against stop time %lld.", e->time - start_time, stop_tag.time - start_time);
                  ^
@@ -698,14 +704,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1229:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("_lf_schedule: event time is past the timeout. Discarding event.");
                      ^
@@ -715,14 +721,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1247:15: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      LOG_PRINT("Inserting event in the event queue with elapsed time %lld.",
                ^
@@ -732,13 +738,13 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_insert_reactions_for_trigger':
 HelloWorld/core/reactor_common.c:1277:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("_lf_schedule_init_reactions() called with a NULL trigger");
@@ -746,27 +752,27 @@ HelloWorld/core/reactor_common.c:1277:23: warning: passing argument 1 of 'warnin
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1285:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("_lf_schedule_init_reactions() called on a timer or physical action.");
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1339:23: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              LOG_PRINT("Enqueued reaction %s at time %lld.", reaction->name, get_logical_time());
                        ^
@@ -776,13 +782,13 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_advance_logical_time':
 HelloWorld/core/reactor_common.c:1395:30: warning: passing argument 1 of 'error_print_and_exit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print_and_exit("_lf_advance_logical_time(): Attempted to move tag back in time.");
@@ -790,14 +796,14 @@ HelloWorld/core/reactor_common.c:1395:30: warning: passing argument 1 of 'error_
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:178:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print_and_exit(char* format, ...) {
       ^~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1397:15: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      LOG_PRINT("Advanced (elapsed) tag to (%lld, %u)", next_time - start_time, current_tag.microstep);
                ^
@@ -807,13 +813,13 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_schedule_int':
 HelloWorld/core/reactor_common.c:1411:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("Action type is not an integer.");
@@ -821,13 +827,13 @@ HelloWorld/core/reactor_common.c:1411:21: warning: passing argument 1 of 'error_
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function '_lf_set_new_array_impl':
 HelloWorld/core/reactor_common.c:1432:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("set_new_array: specified token cannot carry an array. It has zero element_size.");
@@ -835,14 +841,14 @@ HelloWorld/core/reactor_common.c:1432:21: warning: passing argument 1 of 'error_
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1438:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("_lf_set_new_array_impl: Allocated memory for payload %p.", new_token->value);
                  ^
@@ -852,14 +858,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'schedule_output_reactions':
 HelloWorld/core/reactor_common.c:1470:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("There are %d outputs from reaction %s.", reaction->num_outputs, reaction->name);
@@ -870,20 +876,20 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1471:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
      for (int i=0; i < reaction->num_outputs; i++) {
                      ^
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1473:25: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              DEBUG_PRINT("Output %d has been produced.", i);
                          ^
@@ -893,14 +899,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1475:25: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              DEBUG_PRINT("There are %d trigger arrays associated with output %d.", reaction->triggered_sizes[i], i);
                          ^
@@ -910,14 +916,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1479:33: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                      DEBUG_PRINT("Trigger %p lists %d reactions.", trigger, trigger->number_of_reactions);
                                  ^
@@ -927,14 +933,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1524:19: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          LOG_PRINT("Worker %d: Optimizing and executing downstream reaction now: %s", worker, downstream_to_execute_now->name);
                    ^
@@ -944,14 +950,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1601:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Finally, reset reaction's is_STP_violated field to false: %s",
                      ^
@@ -961,14 +967,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'writable_copy':
 HelloWorld/core/reactor_common.c:1621:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("writable_copy: Requesting writable copy of token %p with reference count %d.", token, token->ref_count);
@@ -979,14 +985,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1623:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("writable_copy: Avoided copy because reference count is %d.", token->ref_count);
                      ^
@@ -996,14 +1002,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1626:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("writable_copy: Copying array because reference count is greater than 1. It is %d.", token->ref_count);
                      ^
@@ -1013,14 +1019,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1632:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Allocating memory for writable copy %p.", copy);
                      ^
@@ -1030,13 +1036,13 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: At top level:
 HelloWorld/core/reactor_common.c:1678:23: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
  char* federation_id = "Unidentified Federation";
@@ -1048,157 +1054,157 @@ HelloWorld/core/reactor_common.c:1689:29: warning: passing argument 1 of 'error_
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1700:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("Invalid value for --fast: %s", fast_spec);
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1707:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("--timeout needs time and units.");
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1718:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("Invalid time value: %s", time_spec);
                              ^~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1740:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("Invalid time units: %s", units);
                              ^~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1746:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("--keepalive needs a boolean.");
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1757:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("Invalid value for --keepalive: %s", keep_spec);
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1761:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("--threads needs an integer argument.s");
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1769:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("Invalid value for --threads: %s. Using 1.", threads_spec);
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1775:29: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  error_print("--id needs a string argument.");
                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1780:24: warning: passing argument 1 of 'info_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              info_print("Federation ID for executable %s: %s", argv[0], argv[i]);
                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:114:6: note: expected 'char *' but argument is of type 'const char *'
  void info_print(char* format, ...) {
       ^~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1785:25: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              error_print("Unrecognized command-line argument: %s", argv[i]);
                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'initialize':
 HelloWorld/core/reactor_common.c:1824:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("Start time: %lldns", start_time);
@@ -1209,26 +1215,26 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1828:16: warning: passing argument 1 of 'info_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      info_print("---- Start execution at time %s---- plus %ld nanoseconds.",
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:114:6: note: expected 'char *' but argument is of type 'const char *'
  void info_print(char* format, ...) {
       ^~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c: In function 'termination':
 HelloWorld/core/reactor_common.c:1854:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("---- There are %zu unprocessed future events on the event queue.", pqueue_size(event_q));
@@ -1236,103 +1242,103 @@ HelloWorld/core/reactor_common.c:1854:23: warning: passing argument 1 of 'warnin
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1857:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("---- The first future event has timestamp %lld after start time.", event_time);
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1861:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("Memory allocated for messages has not been freed.");
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1862:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("Number of unfreed messages: %d.", _lf_count_payload_allocations);
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1865:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("Memory allocated for tokens has not been freed!");
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1866:23: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          warning_print("Number of unfreed tokens: %d.", _lf_count_token_allocations);
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1874:20: warning: passing argument 1 of 'info_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          info_print("---- Elapsed logical time (in nsec): %s", time_buffer);
                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:114:6: note: expected 'char *' but argument is of type 'const char *'
  void info_print(char* format, ...) {
       ^~~~~~~~~~
 In file included from HelloWorld/core/reactor.c:35:0,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor_common.c:1880:24: warning: passing argument 1 of 'info_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              info_print("---- Elapsed physical time (in nsec): %s", time_buffer);
                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:114:6: note: expected 'char *' but argument is of type 'const char *'
  void info_print(char* format, ...) {
       ^~~~~~~~~~
 In file included from HelloWorld/HelloWorld.c:5:0,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function '_lf_schedule_copy':
 HelloWorld/core/reactor.c:83:21: warning: passing argument 1 of 'error_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          error_print("schedule: Invalid trigger or element size.");
@@ -1340,14 +1346,14 @@ HelloWorld/core/reactor.c:83:21: warning: passing argument 1 of 'error_print' di
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:155:6: note: expected 'char *' but argument is of type 'const char *'
  void error_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:86:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("schedule_copy: Allocating memory for payload (token value): %p.", trigger);
                  ^
@@ -1357,14 +1363,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function 'wait_until':
 HelloWorld/core/reactor.c:107:19: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          LOG_PRINT("Waiting for elapsed logical time %lld.", logical_time_ns - start_time);
@@ -1375,14 +1381,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:111:25: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              DEBUG_PRINT("Wait time %lld is less than MIN_WAIT_TIME %lld. Skipping wait.",
                          ^
@@ -1392,14 +1398,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function 'print_snapshot':
 HelloWorld/core/reactor.c:123:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT(">>> START Snapshot");
@@ -1410,14 +1416,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:125:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT(">>> END Snapshot");
                      ^
@@ -1427,14 +1433,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function '_lf_enqueue_reaction':
 HelloWorld/core/reactor.c:137:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Enqueing downstream reaction %s.", reaction->name);
@@ -1445,14 +1451,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function '_lf_do_step':
 HelloWorld/core/reactor.c:154:19: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          LOG_PRINT("Invoking reaction %s at elapsed logical tag (%lld, %d).",
@@ -1463,14 +1469,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:176:27: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
                  LOG_PRINT("Deadline violation. Invoking deadline handler.");
                            ^
@@ -1480,14 +1486,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function 'next':
 HelloWorld/core/reactor.c:255:15: warning: passing argument 1 of 'log_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      LOG_PRINT("Next event (elapsed) time is %lld.", next_tag.time - start_time);
@@ -1498,14 +1504,14 @@ HelloWorld/core/util.h:132:31: note: in definition of macro 'LOG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:129:6: note: expected 'char *' but argument is of type 'const char *'
  void log_print(char* format, ...) {
       ^~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:259:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("***** wait_until was interrupted.");
                      ^
@@ -1515,14 +1521,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c: In function 'lf_reactor_c_main':
 HelloWorld/core/reactor.c:331:17: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      DEBUG_PRINT("Processing command line arguments.");
@@ -1533,14 +1539,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:334:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Processed command line arguments.");
                      ^
@@ -1550,14 +1556,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:335:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Registering the termination function.");
                      ^
@@ -1567,26 +1573,26 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/HelloWorld.c:5:0,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:337:27: warning: passing argument 1 of 'warning_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              warning_print("Failed to register termination function!");
                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:166:6: note: expected 'char *' but argument is of type 'const char *'
  void warning_print(char* format, ...) {
       ^~~~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:344:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Initializing.");
                      ^
@@ -1596,14 +1602,14 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
 In file included from HelloWorld/core/reactor.h:62:0,
                  from HelloWorld/ctarget.h:44,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.c:356:21: warning: passing argument 1 of 'debug_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          DEBUG_PRINT("Running the program's main loop.");
                      ^
@@ -1613,11 +1619,11 @@ HelloWorld/core/util.h:163:33: note: in definition of macro 'DEBUG_PRINT'
 In file included from HelloWorld/core/reactor_common.c:40:0,
                  from HelloWorld/core/reactor.c:35,
                  from HelloWorld/HelloWorld.c:5,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/util.c:144:6: note: expected 'char *' but argument is of type 'const char *'
  void debug_print(char* format, ...) {
       ^~~~~~~~~~~
-In file included from main.c:30:0:
+In file included from main.c:38:0:
 HelloWorld/HelloWorld.c: In function 'new_HelloWorld2':
 HelloWorld/HelloWorld.c:48:32: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      self->_lf__reaction_0.name = "?";
@@ -1640,15 +1646,15 @@ In file included from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/librarie
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/integration/nrfx/nrfx_glue.h:71,
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/modules/nrfx/nrfx.h:46,
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/delay/nrf_delay.h:44,
-                 from HelloWorld/core/platform/lf_linux_support.c:35,
-                 from main.c:31:
+                 from HelloWorld/core/platform/lf_nRF52832_support.c:35,
+                 from main.c:39:
 ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h: At top level:
 ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h:97:0: warning: "MIN" redefined
  #define MIN(a, b) ((a) < (b) ? (a) : (b))
  
 In file included from HelloWorld/ctarget.h:44:0,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.h:274:0: note: this is the location of the previous definition
  #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
  
@@ -1656,14 +1662,14 @@ In file included from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/librarie
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/integration/nrfx/nrfx_glue.h:71,
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/modules/nrfx/nrfx.h:46,
                  from ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/delay/nrf_delay.h:44,
-                 from HelloWorld/core/platform/lf_linux_support.c:35,
-                 from main.c:31:
+                 from HelloWorld/core/platform/lf_nRF52832_support.c:35,
+                 from main.c:39:
 ../../nrf52x-base//sdk/nrf5_sdk_15.3.0/components/libraries/util/nordic_common.h:100:0: warning: "MAX" redefined
  #define MAX(a, b) ((a) < (b) ? (b) : (a))
  
 In file included from HelloWorld/ctarget.h:44:0,
                  from HelloWorld/HelloWorld.c:2,
-                 from main.c:30:
+                 from main.c:38:
 HelloWorld/core/reactor.h:271:0: note: this is the location of the previous definition
  #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
  

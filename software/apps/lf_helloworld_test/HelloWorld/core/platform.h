@@ -43,8 +43,8 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define PLATFORM_H
 
 
-// Linux
-#include "platform/lf_linux_support.h"
+// nRF52832
+#include "platform/lf_nRF52832_support.h"
 
 #ifdef NUMBER_OF_WORKERS
 #define LF_TIMEOUT _LF_TIMEOUT

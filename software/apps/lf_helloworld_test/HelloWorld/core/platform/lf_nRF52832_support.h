@@ -1,4 +1,4 @@
-/* MacOS API support for the C target of Lingua Franca. */
+/* nRF52832 API support for the C target of Lingua Franca. */
 
 /*************
 Copyright (c) 2021, The University of California at Berkeley.
@@ -24,38 +24,59 @@ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ***************/
 
-/** Linux API support for the C target of Lingua Franca.
+/** nRF52832 API support for the C target of Lingua Franca.
  *  
  *  @author{Soroush Bateni <soroush@utdallas.edu>}
  */
 
-#include "lf_linux_support.h"
-#include "../platform.h"
-
-#include "nrf_delay.h"
-#include "nrf.h"
+#ifndef LF_nRF52832_SUPPORT_H
+#define LF_nRF52832_SUPPORT_H
 
 #ifdef NUMBER_OF_WORKERS
-#if __STDC_VERSION__ < 201112L || defined (__STDC_NO_THREADS__) // (Not C++11 or later) or no threads support
-#include "lf_POSIX_threads_support.c"
-#else
-#include "lf_C11_threads_support.c"
-#endif
+    #include "lf_POSIX_threads_support.h"
 #endif
 
-#include "lf_unix_clock_support.c"
+#include <stdint.h> // For fixed-width integral types
+#include <time.h>   // For CLOCK_MONOTONIC
+#include <stdbool.h>
 
 /**
- * Pause execution for a number of nanoseconds.
- *
- * A Linux-specific clock_nanosleep is used underneath that is supposedly more
- * accurate.
- *
- * @return 0 for success, or -1 for failure. In case of failure, errno will be
- *  set appropriately (see `man 2 clock_nanosleep`).
+ * Time instant. Both physical and logical times are represented
+ * using this typedef.
+ * WARNING: If this code is used after about the year 2262,
+ * then representing time as a 64-bit long long will be insufficient.
  */
-int lf_nanosleep(instant_t requested_time) {
-    instant_t requested_ms = requested_time / 1000000;
-    nrf_delay_ms((int) requested_ms);
-    return 0;
-}
+typedef int64_t _instant_t;
+
+/**
+ * Interval of time.
+ */
+typedef int64_t _interval_t;
+
+/**
+ * Microstep instant.
+ */
+typedef uint32_t _microstep_t;
+
+
+/**
+ * For user-friendly reporting of time values, the buffer length required.
+ * This is calculated as follows, based on 64-bit time in nanoseconds:
+ * Maximum number of weeks is 15,250
+ * Maximum number of days is 6
+ * Maximum number of hours is 23
+ * Maximum number of minutes is 59
+ * Maximum number of seconds is 59
+ * Maximum number of nanoseconds is 999,999,999
+ * Maximum number of microsteps is 4,294,967,295
+ * Total number of characters for the above is 24.
+ * Text descriptions and spaces add an additional 55,
+ * for a total of 79. One more allows for a null terminator.
+ */
+#define LF_TIME_BUFFER_LENGTH 80
+
+
+// The underlying physical clock for Linux
+#define _LF_CLOCK CLOCK_MONOTONIC
+
+#endif // LF_nRF52832_SUPPORT_H

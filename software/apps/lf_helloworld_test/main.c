@@ -28,5 +28,5 @@
 #endif
 
 #include "HelloWorld/HelloWorld.c"
-#include "HelloWorld/core/platform/lf_linux_support.c"
+#include "HelloWorld/core/platform/lf_nRF52832_support.c"
 
