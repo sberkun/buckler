@@ -13,6 +13,7 @@ CMakeFiles/HelloWorld.dir/core/platform/lf_linux_support.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/xlocale.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
+ /lf/proj/src-gen/HelloWorld/core/platform/lf_tag_64_32.h \
  /lf/proj/src-gen/HelloWorld/core/platform/../platform.h \
  /lf/proj/src-gen/HelloWorld/core/platform/../platform/lf_linux_support.h \
  /lf/proj/src-gen/HelloWorld/core/platform/lf_unix_clock_support.c \

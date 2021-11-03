@@ -171,44 +171,6 @@ void set_stp_offset(interval_t offset) {
     }
 }
 
-/**
- * Print a non-negative time value in nanoseconds with commas separating thousands
- * into the specified buffer. Ideally, this would use the locale to
- * use periods if appropriate, but I haven't found a sufficiently portable
- * way to do that.
- * @param buffer A buffer long enough to contain a string like "9,223,372,036,854,775,807".
- * @param time A time value.
- */
-void readable_time(char* buffer, instant_t time) {
-    // If the number is negative or below 1000, just print it and return.
-    if (time < 1000LL) {
-        sprintf(buffer, "%lld", (long long)time);
-        return;
-    }
-    int count = 0;
-    instant_t clauses[7];
-    while (time > 0LL) {
-        clauses[count++] = time;
-        time = time/1000LL;
-    }
-    // Highest order clause should not be filled with zeros.
-    instant_t to_print = clauses[--count] % 1000LL;
-    sprintf(buffer, "%lld", (long long)to_print);
-    if (to_print >= 100LL) {
-        buffer += 3;
-    } else if (to_print >= 10LL) {
-        buffer += 2;
-    } else {
-        buffer += 1;
-    }
-    while (count-- > 1) {
-        to_print = clauses[count] % 1000LL;
-        sprintf(buffer, ",%03lld,", (long long)to_print);
-        buffer += 4;
-    }
-    sprintf(buffer, ",%03lld", clauses[0] % 1000LL);
-}
-
 /////////////////////////////
 // The following is not in scope for reactors:
 
@@ -1825,7 +1787,7 @@ void initialize() {
 
     struct timespec physical_time_timespec = {physical_start_time / BILLION, physical_start_time % BILLION};
 
-    info_print("---- Start execution at time %s---- plus %ld nanoseconds.",
+    printf("---- Start execution at time %s---- plus %ld nanoseconds.\n",
             ctime(&physical_time_timespec.tv_sec), physical_time_timespec.tv_nsec);
     
     if (duration >= 0LL) {
@@ -1869,15 +1831,15 @@ void termination() {
     // If these are negative, then the program failed to start up.
     interval_t elapsed_time = get_elapsed_logical_time();
     if (elapsed_time >= 0LL) {
-        char time_buffer[28]; // 28 bytes is enough for the largest 64 bit number: 9,223,372,036,854,775,807
-        readable_time(time_buffer, elapsed_time);
-        info_print("---- Elapsed logical time (in nsec): %s", time_buffer);
+        char time_buffer[29]; // 28 bytes is enough for the largest 64 bit number: 9,223,372,036,854,775,807
+        lf_comma_separated_time(time_buffer, elapsed_time);
+        printf("---- Elapsed logical time (in nsec): %s\n", time_buffer);
 
         // If physical_start_time is 0, then execution didn't get far enough along
         // to initialize this.
         if (physical_start_time > 0LL) {
-            readable_time(time_buffer, get_elapsed_physical_time());
-            info_print("---- Elapsed physical time (in nsec): %s", time_buffer);
+        	lf_comma_separated_time(time_buffer, get_elapsed_physical_time());
+            printf("---- Elapsed physical time (in nsec): %s\n", time_buffer);
         }
     }
 }
