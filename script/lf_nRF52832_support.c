@@ -106,7 +106,7 @@ void lf_initialize_clock() {
 int lf_clock_gettime(instant_t* t) {
     if (t == NULL) {
         // The t argument address references invalid memory
-        errno = EFAULT;
+        // errno = EFAULT; //TODO: why does this not work with new build process?
         return -1;
     }
 
