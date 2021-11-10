@@ -1,7 +1,4 @@
-echo "I like cheeseeeee"
-pwd
-echo "banana"
-echo $1
+echo "starting NRF generation script for $1"
 
 cp $(dirname $0)/lf_nRF52832_support.c src-gen/$1/core/platform
 cp $(dirname $0)/lf_nRF52832_support.h src-gen/$1/core/platform
@@ -14,9 +11,7 @@ printf "
 #ifndef CLOCK_MONOTONIC
 #define CLOCK_MONOTONIC 1
 #endif
-#include \"$1.c\"
 #include \"core/platform/lf_nRF52832_support.c\"
-#include \"ctarget.c\"
 " > src-gen/$1/main.c
 
 
