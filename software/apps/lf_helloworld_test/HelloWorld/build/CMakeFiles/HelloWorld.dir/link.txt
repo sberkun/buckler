@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG CMakeFiles/HelloWorld.dir/HelloWorld.c.o CMakeFiles/HelloWorld.dir/core/platform/lf_linux_support.c.o CMakeFiles/HelloWorld.dir/ctarget.c.o -o HelloWorld 
