@@ -48,9 +48,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #if __STDC_VERSION__ < 201112L || defined (__STDC_NO_THREADS__) // (Not C++11 or later) or no threads support
 
 
-typedef nrf_mtx_t _lf_mutex_t;
-typedef CONDITION_VARIABLE _lf_cond_t;
-typedef HANDLE _lf_thread_t;
+// typedef nrf_mtx_t _lf_mutex_t;
+// typedef CONDITION_VARIABLE _lf_cond_t;
+// typedef HANDLE _lf_thread_t;
 
 #else
 #include "lf_C11_threads_support.h"
