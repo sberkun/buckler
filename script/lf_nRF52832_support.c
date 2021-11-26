@@ -138,6 +138,8 @@ int lf_clock_gettime(instant_t* t) {
  */
 int lf_nanosleep(instant_t requested_time) {
     instant_t requested_ms = requested_time / 1000000;
+    instant_t requested_us = (requested_time - 1000000*requested_ms)/1000;
     nrf_delay_ms((int) requested_ms);
+    nrf_delay_us((int) requested_us);
     return 0;
 }
