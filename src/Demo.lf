@@ -1,0 +1,290 @@
+target c;
+
+preamble {=
+        #include <stdbool.h>
+        #include <stdint.h>
+        #include <stdio.h>
+         
+        #include "app_error.h"
+        #include "nrf.h"
+        #include "nrf_delay.h"
+        #include "nrfx_gpiote.h"
+        #include "nrf_gpio.h"
+        #include "nrf_log.h"
+        #include "nrf_log_ctrl.h"
+        #include "nrf_log_default_backends.h"
+        #include "nrf_pwr_mgmt.h"
+        #include "nrf_serial.h"
+         
+        #include "buckler.h"
+        
+         
+        // LED array
+        static uint8_t LEDS[3] = {17, 18, BUCKLER_LED2};
+
+
+        // pins
+        static uint8_t ULT1_ECHO_PIN = 24;
+        static uint8_t ULT1_TRIG_PIN = 23;
+        static uint8_t ULT2_ECHO_PIN = 27;
+        static uint8_t ULT2_TRIG_PIN = 26;
+        
+        volatile int distance_1 = 0;
+        volatile uint32_t time_duration_1 = 0;
+        volatile uint32_t time_sent_1 = 0;
+        volatile uint32_t time_received_1 = 0;
+        volatile bool pulse_sent_1 = false;
+        volatile bool echo_received_1 = false;
+         
+        volatile int distance_2;
+        volatile uint32_t time_duration_2;
+        volatile uint32_t time_sent_2;
+        volatile uint32_t time_received_2;
+        volatile bool pulse_sent_2;
+        volatile bool echo_received_2 = true;
+         
+         
+        //since nominal range is 4, wait until 12 meters (24 round-trip) to time out 
+        float timeout = 1200 * 2.0 / 0.034;
+         
+        void init_timer() {
+            NRF_TIMER4->BITMODE = 3;
+            NRF_TIMER4->PRESCALER = 4;
+            NRF_TIMER4->TASKS_CLEAR = 1;
+            NRF_TIMER4->TASKS_START = 1;
+        }
+        
+         
+        // returns current time in microseconds
+        uint32_t get_time() {
+          NRF_TIMER4->TASKS_CAPTURE[1] = 1;
+          return NRF_TIMER4->CC[1];
+        }
+        
+        // handler called whenever an input pin changes
+        void pin_change_handler_1(nrfx_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+            time_received_1 = get_time();
+            time_duration_1 = time_received_1 - time_sent_1;
+            echo_received_1 = true;
+        }
+        
+        void pin_change_handler_2(nrfx_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+            time_received_2 = get_time();
+            time_duration_2 = time_received_2 - time_sent_2;
+            echo_received_2 = true;
+        }
+
+        
+=}
+
+reactor ULT1 {
+    
+    output out:int;
+    
+    reaction(startup) {=
+        ret_code_t error_code = NRF_SUCCESS;
+      
+        // initialize power management
+        error_code = nrf_pwr_mgmt_init();
+        
+        // initialize GPIO driver
+        if (!nrfx_gpiote_is_init()) {
+        error_code = nrfx_gpiote_init();  
+        } 
+        APP_ERROR_CHECK(error_code);
+        
+        // configure led 1
+        // manually-controlled (simple) output, initially high
+        nrfx_gpiote_out_config_t led_out_config = NRFX_GPIOTE_CONFIG_OUT_SIMPLE(true);
+        error_code = nrfx_gpiote_out_init(LEDS[0], &led_out_config);
+        APP_ERROR_CHECK(error_code);
+        
+        
+        // configure ultra-sonic pulse pin
+        nrfx_gpiote_out_config_t ult1_trig_config = NRFX_GPIOTE_CONFIG_OUT_SIMPLE(false); 
+        APP_ERROR_CHECK(nrfx_gpiote_out_init(ULT1_TRIG_PIN, &ult1_trig_config));
+    
+        
+        // configure ultra-sonic echo pin 
+        nrfx_gpiote_in_config_t ult1_echo_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
+        ult1_echo_config.pull = NRF_GPIO_PIN_NOPULL;
+        error_code = nrfx_gpiote_in_init(ULT1_ECHO_PIN, &ult1_echo_config, pin_change_handler_1);
+        nrfx_gpiote_in_event_enable(ULT1_ECHO_PIN, true);
+        APP_ERROR_CHECK(error_code);
+    
+        init_timer();
+      
+      
+    =}
+    
+    timer t(0, 10 msec)
+    reaction(t) -> out {=
+                
+        if (echo_received_2) {
+            
+            if (echo_received_1) {
+                distance_1 = 500;
+                pulse_sent_1 = false;
+                
+                echo_received_2 = false;
+            } else {
+                // clear the ultrasonic sensor trigger pin
+                nrfx_gpiote_out_clear(ULT1_TRIG_PIN);
+                nrf_delay_us(2);
+        
+                // toggle the ultrasonic sensor trigger pin (HIGH) for 10 usecs
+                nrfx_gpiote_out_set(ULT1_TRIG_PIN);
+                nrf_delay_us(10);
+                nrfx_gpiote_out_clear(ULT1_TRIG_PIN);
+        
+                time_sent_1 = get_time();
+        
+                nrf_delay_ms(2);
+        
+                distance_1 = time_duration_1 * 0.034 / 2;
+        
+                SET(out, distance_1);
+            }
+            
+        }
+        
+        
+    =}
+    
+}
+
+reactor Distance_1 {
+    input in:int;
+    reaction(in) {=
+        if (in->is_present) {
+            printf("Distance 1: %i cm\n", in->value);
+
+            if ((50 < in->value) && (in->value <= 100)) {
+                nrfx_gpiote_out_clear(LEDS[0]);
+
+            } else {
+                nrfx_gpiote_out_set(LEDS[0]);
+            }
+    
+            if ((0 < in->value) && (in->value <= 50)) {
+                nrfx_gpiote_out_clear(LEDS[0]);
+            } else {
+                nrfx_gpiote_out_set(LEDS[0]);
+            }
+        }
+    =}
+}
+
+reactor ULT2 {
+    
+    output out:int;
+        
+    reaction(startup) {=
+        ret_code_t error_code = NRF_SUCCESS;
+      
+        // initialize power management
+        error_code = nrf_pwr_mgmt_init();
+        
+        // initialize GPIO driver
+        if (!nrfx_gpiote_is_init()) {
+        error_code = nrfx_gpiote_init();  
+        } 
+        APP_ERROR_CHECK(error_code);
+        
+        // configure led 2
+        // manually-controlled (simple) output, initially high
+        nrfx_gpiote_out_config_t led_1_out_config = NRFX_GPIOTE_CONFIG_OUT_SIMPLE(true);
+        error_code = nrfx_gpiote_out_init(LEDS[1], &led_1_out_config);
+        APP_ERROR_CHECK(error_code);
+        
+        
+        // configure ultra-sonic pulse pin
+        nrfx_gpiote_out_config_t ult2_trig_config = NRFX_GPIOTE_CONFIG_OUT_SIMPLE(false); 
+        APP_ERROR_CHECK(nrfx_gpiote_out_init(ULT2_TRIG_PIN, &ult2_trig_config));
+    
+        
+        // configure ultra-sonic echo pin 
+        nrfx_gpiote_in_config_t ult2_echo_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
+        ult2_echo_config.pull = NRF_GPIO_PIN_NOPULL;
+        error_code = nrfx_gpiote_in_init(ULT2_ECHO_PIN, &ult2_echo_config, pin_change_handler_2);
+        nrfx_gpiote_in_event_enable(ULT2_ECHO_PIN, true);
+        APP_ERROR_CHECK(error_code);
+    
+        init_timer();
+      
+      
+    =}
+    
+    timer t(0, 5 msec)
+    reaction(t) -> out {=
+        
+        if (echo_received_1) {
+            
+            if (echo_received_2) {
+                distance_2 = 500;
+                pulse_sent_2 = false;
+                echo_received_1 = false;
+            
+            } else {
+                // clear the ultrasonic sensor trigger pin
+                nrfx_gpiote_out_clear(ULT2_TRIG_PIN);
+                nrf_delay_us(2);
+        
+                // toggle the ultrasonic sensor trigger pin (HIGH) for 10 usecs
+                nrfx_gpiote_out_set(ULT2_TRIG_PIN);
+                nrf_delay_us(10);
+                nrfx_gpiote_out_clear(ULT2_TRIG_PIN);
+        
+                time_sent_2 = get_time();
+                pulse_sent_2 = true;
+        
+                nrf_delay_ms(2);
+        
+                distance_2 = time_duration_2 * 0.034 / 2;
+        
+                SET(out, distance_2);
+            }
+            
+        }
+        
+        
+    =}
+}
+
+
+reactor Distance_2 {
+    input in:int;
+    reaction(in) {=
+        if (in->is_present) {
+            printf("Distance 2: %i cm\n", in->value);
+
+            if ((50 < in->value) && (in->value <= 100)) {
+                nrfx_gpiote_out_clear(LEDS[1]);
+            } else {
+                nrfx_gpiote_out_set(LEDS[1]);
+            }
+    
+            if ((0 < in->value) && (in->value <= 50)) {
+                nrfx_gpiote_out_clear(LEDS[1]);
+            } else {
+                nrfx_gpiote_out_set(LEDS[1]);
+            }
+        }
+    =}
+}
+
+
+
+
+main reactor Demo {
+    u1 = new ULT1();
+    u2 = new ULT2();
+    d1 = new Distance_1();
+    d2 = new Distance_2();
+    u1.out -> d1.in;
+    u2.out -> d2.in;
+    
+
+}
+
+
