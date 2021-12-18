@@ -22,7 +22,8 @@ BOARD_HEADER_PATHS += $(wildcard $(BOARD_DIR)/../libraries/*/)
 
 BOARD_LINKER_PATHS = $(BOARD_DIR)/.
 BOARD_SOURCES = $(notdir $(wildcard $(BOARD_DIR)/./*.c))
-BOARD_SOURCES += $(notdir $(wildcard $(BOARD_DIR)/../../libraries/*/*.c))
+# BOARD_SOURCES += $(notdir $(wildcard $(BOARD_DIR)/../../libraries/*/*.c))
+BOARD_SOURCES += $(notdir $(wildcard $(BOARD_DIR)/../libraries/*/*.c))
 BOARD_AS = $(notdir $(wildcard $(BOARD_DIR)/./*.s))
 
 # Convert board to upper case
